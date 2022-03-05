@@ -67,22 +67,22 @@
 Reflected XSS
 <a class=anchor href=#reflected-xss>#</a>
 </h3><p>Example:</p><p>
-<img src=../../image.PNG alt="Example image">
+<img src=/1.PNG alt="Example image">
 This is an application in WebGoat that demonstrate how Reflected XSS works. See the value “I’m here” in the input field being reflected in the web page? This indicates our application may be vulnerable.
-<img src=../../5.PNG alt="Example image">
+<img src=/5.PNG alt="Example image">
 To test the application, we need to input a payload, in this case I’m using <code>&lt;script>alert(document.cookie)&lt;/script></code>.
-<img src=../../17.PNG alt="Example image">
+<img src=/17.PNG alt="Example image">
 Now we are certain the application is vulnerable. Ok, this is cool and all but we can’t do much with it. Generally reflected XSS can do bad things when the data reflected can be embedded in the URL.</p><p>Example:</p><p>
-<img src=../../1.PNG alt="Example image">
-<img src=../../2.PNG alt="Example image">
+<img src=/1.PNG alt="Example image">
+<img src=/2.PNG alt="Example image">
 Notice when we search for “test” a message is returned saying “0 search results for ‘test’”, this means the value that we inputted is being reflected to our web page, which means this site maybe vulnerable to Reflected XSS. Is also important to notice there is a search parameter passing “test” as value in the URL bar. This shows that if this input field is vulnerable to Reflected XSS, it can be exploited by sending crafted URLs leading to user’s accounts being hijacked, credentials stolen, sensitive data exfiltrated, and lastly, access to your client computers can be obtained.</p><p>Now we need to test to see if this site is actually vulnerable.</p><p>
-<img src=../../3.PNG alt="Example image"></p><p>
-<img src=../../18.PNG alt="Example image"></p><p>
-<img src=../../19.PNG alt="Example image"></p><p>Perfect! We did it. Now we can craft URLs with payloads in the search parameter and use some kind of social engineer in order to make someone click it.</p><p>As was said, Stored XSS is much more dangerous because the payload is stored in the server. Knowing how XSS works and specifically how Stored XSS works, it’s obvious to think that this type of vulnerability may happen with a common feature, that fulfils all prerequisites, like a comment section. An important thing to mention is that here there is no need for the reflected value to be passed via URL parameter in order to be dangerous.</p><h3 id=stored-xss>
+<img src=/3.PNG alt="Example image"></p><p>
+<img src=/18.PNG alt="Example image"></p><p>
+<img src=/19.PNG alt="Example image"></p><p>Perfect! We did it. Now we can craft URLs with payloads in the search parameter and use some kind of social engineer in order to make someone click it.</p><p>As was said, Stored XSS is much more dangerous because the payload is stored in the server. Knowing how XSS works and specifically how Stored XSS works, it’s obvious to think that this type of vulnerability may happen with a common feature, that fulfils all prerequisites, like a comment section. An important thing to mention is that here there is no need for the reflected value to be passed via URL parameter in order to be dangerous.</p><h3 id=stored-xss>
 Stored XSS
 <a class=anchor href=#stored-xss>#</a>
 </h3><p>Example:</p><p>
-<img src=../../20.PNG alt="Example image"></p><p>The comment added was: <code>&lt;script>alert(“try it 2”)&lt;/script></code>.
+<img src=/20.PNG alt="Example image"></p><p>The comment added was: <code>&lt;script>alert(“try it 2”)&lt;/script></code>.
 Again, every time someone access this page the script is going to be executed in their browser.</p><h2 id=who-to-fix-it>
 <strong>Who to fix it?</strong>
 <a class=anchor href=#who-to-fix-it>#</a>
@@ -91,14 +91,14 @@ Again, every time someone access this page the script is going to be executed in
 Reflected fix:
 <a class=anchor href=#reflected-fix>#</a>
 </h3><p>
-<img src=../../12.PNG alt="Example image"></p><p>My intention in showing this again is to clarify the next steps.</p><p>
-<img src=../../21.PNG alt="Example image">
+<img src=/12.PNG alt="Example image"></p><p>My intention in showing this again is to clarify the next steps.</p><p>
+<img src=/21.PNG alt="Example image">
 This is called <em><strong>Burp suite</strong></em>. <strong>Burp</strong>, as we kindly name it, is a proxy. Ok, but what is a proxy? A proxy is something that seats between you and the server you trying to access. Burp intercepts the traffic between your browser and the server you’re communicating with in order to show exactly how this communication is happening. See that <code>field1=%3Cscript%3Ealert(document.domain)%3C%2Fscript%3E</code> in the URL parameter?
 You don’t need to worry, it’s just what we inputted in the credit card number field but it’s URL encoded.</p><p>
-<img src=../../8.PNG alt="Example image"></p><p>The value of that “field1” parameter in the last image is being assigned to a “field1” variable and this variable is used to create a massage that will return to the user. The problem is that this variable is not being sanitized, which causes the XSS.</p><p>
-<img src=../../9.PNG alt="Example image"></p><p>What is happening? We’re simply HTML encoding this string <code>&lt;script>alert(document.domain)&lt;/script></code> in the variable “field1” to <code>&amp;lt;script&amp;gt;alert(document.domain)&amp;lt;/script&amp;gt;</code>.</p><p>
-<img src=../../11.PNG alt="Example image"></p><p>
-<img src=../../10.PNG alt="Example image">
+<img src=/8.PNG alt="Example image"></p><p>The value of that “field1” parameter in the last image is being assigned to a “field1” variable and this variable is used to create a massage that will return to the user. The problem is that this variable is not being sanitized, which causes the XSS.</p><p>
+<img src=/9.PNG alt="Example image"></p><p>What is happening? We’re simply HTML encoding this string <code>&lt;script>alert(document.domain)&lt;/script></code> in the variable “field1” to <code>&amp;lt;script&amp;gt;alert(document.domain)&amp;lt;/script&amp;gt;</code>.</p><p>
+<img src=/11.PNG alt="Example image"></p><p>
+<img src=/10.PNG alt="Example image">
 It won’t be executed anymore.</p><h3 id=stored-fix>
 Stored fix:
 <a class=anchor href=#stored-fix>#</a>
