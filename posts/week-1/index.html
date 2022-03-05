@@ -12,7 +12,7 @@
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.ab46de3e725a6415339a37bba23a0067534a37289b063c9f8d011515a63097a8.css integrity="sha256-q0bePnJaZBUzmje7ojoAZ1NKNyibBjyfjQEVFaYwl6g=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.3e016691b23874cd12659035483f60d3aafb0f8b15a29cec690222da783ca19f.js integrity="sha256-PgFmkbI4dM0SZZA1SD9g06r7D4sVopzsaQIi2ng8oZ8=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.221272223ad17393121c6a52c56611a5a9c1875db09ef7812edfdc9984b59f4d.js integrity="sha256-IhJyIjrRc5MSHGpSxWYRpanBh12wnveBLt/cmYS1n00=" crossorigin=anonymous></script>
 <script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script>
 </head><body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -67,22 +67,22 @@
 Reflected XSS
 <a class=anchor href=#reflected-xss>#</a>
 </h3><p>Example:</p><p>
-<img src=/1.PNG alt="Example image">
+<img src=/images/1_hu2b61f82b94c2ae432fcc65e7fdf84593_48167_800x0_resize_box_3.PNG alt>
 This is an application in WebGoat that demonstrate how Reflected XSS works. See the value “I’m here” in the input field being reflected in the web page? This indicates our application may be vulnerable.
-<img src=/5.PNG alt="Example image">
+<img src=/images/5_hu0ec88fd202ab58756899b810c1d81656_72282_800x0_resize_box_3.PNG alt>
 To test the application, we need to input a payload, in this case I’m using <code>&lt;script>alert(document.cookie)&lt;/script></code>.
-<img src=/17.PNG alt="Example image">
+<img src=/images/17_hu69ad8b99ec7040333eb6dd460ee9e0e7_149804_800x0_resize_box_3.PNG alt>
 Now we are certain the application is vulnerable. Ok, this is cool and all but we can’t do much with it. Generally reflected XSS can do bad things when the data reflected can be embedded in the URL.</p><p>Example:</p><p>
-<img src=/1.PNG alt="Example image">
-<img src=/2.PNG alt="Example image">
-Notice when we search for “test” a message is returned saying “0 search results for ‘test’”, this means the value that we inputted is being reflected to our web page, which means this site maybe vulnerable to Reflected XSS. Is also important to notice there is a search parameter passing “test” as value in the URL bar. This shows that if this input field is vulnerable to Reflected XSS, it can be exploited by sending crafted URLs leading to user’s accounts being hijacked, credentials stolen, sensitive data exfiltrated, and lastly, access to your client computers can be obtained.</p><p>Now we need to test to see if this site is actually vulnerable.</p><p>
-<img src=/3.PNG alt="Example image"></p><p>
-<img src=/18.PNG alt="Example image"></p><p>
-<img src=/19.PNG alt="Example image"></p><p>Perfect! We did it. Now we can craft URLs with payloads in the search parameter and use some kind of social engineer in order to make someone click it.</p><p>As was said, Stored XSS is much more dangerous because the payload is stored in the server. Knowing how XSS works and specifically how Stored XSS works, it’s obvious to think that this type of vulnerability may happen with a common feature, that fulfils all prerequisites, like a comment section. An important thing to mention is that here there is no need for the reflected value to be passed via URL parameter in order to be dangerous.</p><h3 id=stored-xss>
+<img src=/images/1_hu2b61f82b94c2ae432fcc65e7fdf84593_48167_800x0_resize_box_3.PNG alt>
+<img src=/images/2_hu6bf81292effa33f8a15c9e1180fefe07_52683_800x0_resize_box_3.PNG alt>
+Notice when we search for “test” a message is returned saying “0 search results for ‘test’”, this means the value that we inputted is being reflected to our web page, which means this site maybe vulnerable to Reflected XSS. Is also important to notice there is a search parameter passing “test” as value in the URL bar. This shows that if this input field is vulnerable to Reflected XSS, it can be exploited by sending crafted URLs leading to user’s accounts being hijacked, credentials stolen, sensitive data exfiltrated, and lastly, access to your client computers can be obtained.</p><p>Now we need to test to see if this site is actually vulnerable.</p><img src=/images/3_hu6997af9aca4b5554ab41d9be4ea7a1a9_56200_800x0_resize_box_3.PNG alt>
+<img src=/images/18_huacbf1e9355d87247ba53cb6a158cf565_66474_800x0_resize_box_3.PNG alt>
+<img src=/images/19_hua7b0e4a2508fd3469c8e5d002ba5f798_86467_800x0_resize_box_3.PNG alt>
+<p>Perfect! We did it. Now we can craft URLs with payloads in the search parameter and use some kind of social engineer in order to make someone click it.</p><p>As was said, Stored XSS is much more dangerous because the payload is stored in the server. Knowing how XSS works and specifically how Stored XSS works, it’s obvious to think that this type of vulnerability may happen with a common feature, that fulfils all prerequisites, like a comment section. An important thing to mention is that here there is no need for the reflected value to be passed via URL parameter in order to be dangerous.</p><h3 id=stored-xss>
 Stored XSS
 <a class=anchor href=#stored-xss>#</a>
-</h3><p>Example:</p><p>
-<img src=/20.PNG alt="Example image"></p><p>The comment added was: <code>&lt;script>alert(“try it 2”)&lt;/script></code>.
+</h3><p>Example:</p><img src=/images/20_hu7a2ce381249f8d51cd59fc6f5962b1ce_349600_800x0_resize_box_3.PNG alt>
+<p>The comment added was: <code>&lt;script>alert(“try it 2”)&lt;/script></code>.
 Again, every time someone access this page the script is going to be executed in their browser.</p><h2 id=who-to-fix-it>
 <strong>Who to fix it?</strong>
 <a class=anchor href=#who-to-fix-it>#</a>
@@ -90,15 +90,15 @@ Again, every time someone access this page the script is going to be executed in
 <li>Both reflected and stored XSS can be fixed by performing the appropriate validation and encoding on the server-side. The best way to provide this proper validation and encoding is, as OWASP recommends, using a security-focused encoding library to make sure these rules are properly implemented.</li></ul><h3 id=reflected-fix>
 Reflected fix:
 <a class=anchor href=#reflected-fix>#</a>
-</h3><p>
-<img src=/12.PNG alt="Example image"></p><p>My intention in showing this again is to clarify the next steps.</p><p>
-<img src=/21.PNG alt="Example image">
+</h3><img src=/images/12_hu956cd4250f3e6dcc4b8f5f9478d5e200_71196_800x0_resize_box_3.PNG alt>
+<p>My intention in showing this again is to clarify the next steps.</p><p>
+<img src=/images/21_hubd496e362ad8d78525d942a9f22a29a4_130487_800x0_resize_box_3.PNG alt>
 This is called <em><strong>Burp suite</strong></em>. <strong>Burp</strong>, as we kindly name it, is a proxy. Ok, but what is a proxy? A proxy is something that seats between you and the server you trying to access. Burp intercepts the traffic between your browser and the server you’re communicating with in order to show exactly how this communication is happening. See that <code>field1=%3Cscript%3Ealert(document.domain)%3C%2Fscript%3E</code> in the URL parameter?
-You don’t need to worry, it’s just what we inputted in the credit card number field but it’s URL encoded.</p><p>
-<img src=/8.PNG alt="Example image"></p><p>The value of that “field1” parameter in the last image is being assigned to a “field1” variable and this variable is used to create a massage that will return to the user. The problem is that this variable is not being sanitized, which causes the XSS.</p><p>
-<img src=/9.PNG alt="Example image"></p><p>What is happening? We’re simply HTML encoding this string <code>&lt;script>alert(document.domain)&lt;/script></code> in the variable “field1” to <code>&amp;lt;script&amp;gt;alert(document.domain)&amp;lt;/script&amp;gt;</code>.</p><p>
-<img src=/11.PNG alt="Example image"></p><p>
-<img src=/10.PNG alt="Example image">
+You don’t need to worry, it’s just what we inputted in the credit card number field but it’s URL encoded.</p><img src=/images/8_hu020b489ab33a5fddf6894fffa2dc1da7_71151_800x0_resize_box_3.PNG alt>
+<p>The value of that “field1” parameter in the last image is being assigned to a “field1” variable and this variable is used to create a massage that will return to the user. The problem is that this variable is not being sanitized, which causes the XSS.</p><img src=/images/9_hu9ff55bc1bd302cc5bceb3fc792e82cb8_74411_800x0_resize_box_3.PNG alt>
+<p>What is happening? We’re simply HTML encoding this string <code>&lt;script>alert(document.domain)&lt;/script></code> in the variable “field1” to <code>&amp;lt;script&amp;gt;alert(document.domain)&amp;lt;/script&amp;gt;</code>.</p><img src=/images/11_hue5970b8f9693002f977d4b67f4f0bcfe_226016_800x0_resize_box_3.PNG alt>
+<p>
+<img src=/images/10_hub28cb38b4593f3e61b5403413011c403_75739_800x0_resize_box_3.PNG alt>
 It won’t be executed anymore.</p><h3 id=stored-fix>
 Stored fix:
 <a class=anchor href=#stored-fix>#</a>
