@@ -1,6 +1,6 @@
 baseURL = 'https://simp1exp.github.io/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Simp1exp'
 theme = 'hugo-book'
 
 
