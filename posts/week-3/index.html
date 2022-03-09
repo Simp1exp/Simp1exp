@@ -1,0 +1,135 @@
+<!doctype html><html lang=en-us dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Authentication and Authorization #  What’s this? #  These two are similar in the sense that they guarantee privacy, but they’re also different. Authentication is who you claim to be. Authorization is what you’re allowed to do.
+In this course, authorization is only defined but not explored further to how these policies are ensured. So, some things like the access control model, vertical and horizontal escalation aren’t mentioned. Since my intention isn’t to go out of the scope of this course, I won’t talk about it.">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content="Week 3">
+<meta property="og:description" content="Authentication and Authorization #  What’s this? #  These two are similar in the sense that they guarantee privacy, but they’re also different. Authentication is who you claim to be. Authorization is what you’re allowed to do.
+In this course, authorization is only defined but not explored further to how these policies are ensured. So, some things like the access control model, vertical and horizontal escalation aren’t mentioned. Since my intention isn’t to go out of the scope of this course, I won’t talk about it.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://simp1exp.github.io/posts/week-3/"><meta property="article:section" content="posts">
+<title>Week 3 | Simp1exp</title><link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.ab46de3e725a6415339a37bba23a0067534a37289b063c9f8d011515a63097a8.css integrity="sha256-q0bePnJaZBUzmje7ojoAZ1NKNyibBjyfjQEVFaYwl6g=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.77b086682a1c0d6e495bb4f203ed23ceeaebe3c56829184f61b6a2d40c6872f9.js integrity="sha256-d7CGaCocDW5JW7TyA+0jzurr48VoKRhPYbai1Axocvk=" crossorigin=anonymous></script>
+<script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script>
+</head><body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><img src=/logo.jpg alt=Logo><span>Simp1exp</span>
+</a>
+</h2><div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul>
+<li>
+<a href=/posts/introduction/>Introduction</a>
+</li><li>
+<a href=/posts/week-1/>Week 1</a>
+</li><li>
+<a href=/posts/week-2/>Week 2</a>
+</li><li>
+<a href=/posts/week-3/ class=active>Week 3</a>
+</li><li>
+<a href=/posts/week-4/>Week 4</a>
+</li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div></aside><div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>Week 3</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div><aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#whats-this><strong>What’s this?</strong></a></li><li><a href=#authentication><strong>Authentication</strong></a>
+<ul>
+<li><a href=#whats-this-1><strong>What’s this?</strong></a></li><li><a href=#how-to-fix-it><strong>How to fix it?</strong></a></li></ul></li><li><a href=#jwt><strong>JWT</strong></a>
+<ul>
+<li><a href=#whats-this-2><strong>What’s this?</strong></a></li><li><a href=#how-to-fix-it-1><strong>How to fix it?</strong></a></li></ul></li></ul></nav></aside></header><article class=markdown>
+<h1>
+<a href=/posts/week-3/>Week 3</a>
+</h1><h1 id=authentication-and-authorization>
+<strong>Authentication and Authorization</strong>
+<a class=anchor href=#authentication-and-authorization>#</a>
+</h1><h2 id=whats-this>
+<strong>What’s this?</strong>
+<a class=anchor href=#whats-this>#</a>
+</h2><p>These two are similar in the sense that they guarantee privacy, but they’re also different. Authentication is who you claim to be. Authorization is what you’re allowed to do.</p><p>In this course, authorization is only defined but not explored further to how these policies are ensured. So, some things like the access control model, vertical and horizontal escalation aren’t mentioned. Since my intention isn’t to go out of the scope of this course, I won’t talk about it.</p><h2 id=authentication>
+<strong>Authentication</strong>
+<a class=anchor href=#authentication>#</a>
+</h2><h3 id=whats-this-1>
+<strong>What’s this?</strong>
+<a class=anchor href=#whats-this-1>#</a>
+</h3><p>Authentication is a process that responds to a key question. You’re who you claim to be? There are various types of processes we know and use every day to authenticate ourselves in different systems. We can categorize them into three different types.</p><ol>
+<li>
+<p>Something you have. This type of authentication mechanism can be something like a phone. It’s important to be something physical, otherwise ‘Something you have’ and ‘Something you know’ tend to intertwine at some point.</p></li><li>
+<p>Something you know. An example would be a password, a security question, etc…</p></li><li>
+<p>Something you are. Here a good example is your biometrics.</p></li></ol><p>It’s important to notice, in a system that requires authentication, you can have multiple of these in the same category, but for it to be a 2FA(two-factor authentication) or 3FA(three-factor authentication), there must have at least one of them. One example is your Steam that implements a 2FA, in their case, there is a common login form, followed by a code you get from your mobile device. We’re going to see next one of the most common vulnerabilities that an authentication system has, logic flaws.</p><img src=/images/1_week3_huf684e64e6793d5153c8feddc146bd5ce_21614_1200x0_resize_box_3.PNG alt>
+<img src=/images/2_week3_hu6eb928f12b162726e2c36004f86c2bc1_43754_1200x0_resize_box_3.PNG alt>
+<p>There are 2 security questions passed via a post request. In a real scenario where you don’t have access to the source code. To test this feature, you would have to fuzz all these parameters trying to find something that pops an error or you can be lucky and pops exactly what you’re looking for.</p><p>In this case, we already know this application is insecure and we don’t want to spend time fuzzing it. Our goal here is to understand what is happening, so let’s go to the code and see what it does.</p><img src=/images/3_week3_hu1e173821fd2db14db2bb8c4332f2a14b_65934_1200x0_resize_box_3.PNG alt>
+<p>Here is the code responsible for all we need to know. The first thing that we notice is that our answers to those questions are being parsed by a custom function called “parseSecQuestions”, which makes obvious what it does. We already know that custom features are dangerous when not tested intensively. Ok, this method seems interesting. Now, how does it parse the SecQuestions? This function receives the request as a parameter and returns a data structure called hash map(it’s like a dictionary in python), it works with a key: value pair, in this case, String Key: String Value. But, you see, there is a for loop to pass through all parameters and see the ones that contain the string “secQuestion” and if it contains, adds it to the dictionary. Knowing this, our hash map might look something like this {“secQuestion0”: “test”, “secQuestion1”: ”test”}. After we returned the Hash map, there is a method called “didUserLikelyCheat”. I’m not going to dig deep into it, but basically, these checks if the answer to secQuestion0 and secQuestion1 are the ones hardcoded. Next to this method, we have another method called “verifyAccount” inside an if statement that, when true, returns to us a “.feedback(“verify-account.success”)”, plus the parameters of this method are “userId” and the previous parsed HashMap. Ok, this is what we want. Let’s see what the code looks like.</p><img src=/images/13_week3_hu2b31d6baa7b1066ef5ef569af82cb425_170826_1200x0_resize_box_3.PNG alt>
+<p>The goal here is to return true, for that, we need to craft a payload that passes through all these conditions without triggering none of them. The first “if” checks if we’re sending the same number of “secQuestion” parameters that the correct request should have, which is 2. The second and the third check if there is a parameter called “secQuestion0” and “secQuestion1” respectively, and after that, it uses an and gate(&&). Knowing all of this is easy to come up with a proper request, something like this should do the job:</p><p>
+<img src=/images/4_week3_huffd3bb9b6b7ba97caf95bd17595000dc_43711_1200x0_resize_box_3.PNG alt>
+<img src=/images/15_week3_hu475b7c300f1c0d9c634795b07bd2b7a8_89502_1200x0_resize_box_3.PNG alt>
+</p><h3 id=how-to-fix-it>
+<strong>How to fix it?</strong>
+<a class=anchor href=#how-to-fix-it>#</a>
+</h3><p>The right way to fix this would be by using a trusted framework, instead of doing this custom logic. In this lesson, the professor fixes this code rewriting it more safely, using concepts like “Fail closed” which ensures that if there is an edge case, it won’t return true.</p><pre tabindex=0><code>public boolean verifyAccount(Integer userId, HashMap&lt;String,String&gt; submittedQuestions ) { 
+
+    if (submittedQuestions.entrySet().size() != secQuestionStore.get(verifyUserId.size()) { 
+        return false; 
+    } 
+    if (submittedQuestions.containsKey(&#34;secQuestion0&#34;) &amp;&amp; subnittedQuestions.get(&#34;secQuestion0&#34;).equals(secQuestionStore.get(verifyUserId).get(&#34;secQuestion0&#34;))){
+        return true; 
+    }
+    if (submittedQuestions.containsKey(&#34;secQuestionl&#34;) &amp;&amp; subnittedQuestions.get(&#34;secQuestionl&#34;).equals(secQuestionStore.get(verifyUserId).get(&#34;secQuestion1&#34;))){
+        return true; 
+    } 
+
+return false; 
+    
+} 
+</code></pre><h2 id=jwt>
+<strong>JWT</strong>
+<a class=anchor href=#jwt>#</a>
+</h2><h3 id=whats-this-2>
+<strong>What’s this?</strong>
+<a class=anchor href=#whats-this-2>#</a>
+</h3><p><strong>JSON Web Token</strong>(JWT) is a secure and trustworthy standard for token authentication. Token authentication is an approach to persist the identity of a user after the initial authentication process. It ensures users don&rsquo;t need to place their credentials every time they want to act.</p><p>The JWT anatomy is:</p><img src=/images/6_week3_hu42a8b2bbde30634c96042b793505eab4_159057_1200x0_resize_box_3.PNG alt>
+<p>It’s a long-encoded string with a total of 3 sections separated by dots. The reason for being encoded is simple. It prevents the JWT from breaking applications that don’t allow specific characters.
+See the last part, the “verify signature”? “foo” is a secret key used to encrypt the message using the <strong>HMACSHA512</strong> hash algorithm, this guarantees the integrity of the massage. That way the payload can contain things like “admin”: false, and even if you use a proxy to intercept the <strong>HTTP</strong> request and change the value “admin”: true, it won’t work.</p><p>Just to clarify, here’s the basic sequence of getting a token:</p><img src=/images/16_week3_huf187a672e1dd9de05e2d3b874a1ba61b_71824_1200x0_resize_box_3.PNG alt>
+<p>Here is the example of JWT vulnerability used in the class:</p><img src=/images/7_week3_hu65cf1621ac86dccfbf4467ba9265d1a7_138100_1200x0_resize_box_3.PNG alt>
+<p>Our goal is to reset the votes, and for that, we need to be an admin.</p><img src=/images/8_week3_hudec6e0910838e85613cd98a4da218178_56229_1200x0_resize_box_3.PNG alt>
+<p>Here is the request responsible for resetting all votes. Se the “access_token”? By the structure we can tell already, this is a JWT. So, let’s decode it.</p><img src=/images/9_week3_hud028cb741d8106828b23aca2ddfc1e55_19864_1200x0_resize_box_3.PNG alt>
+<p>This is what we get when base64 decoding the message. There are several ways on how this JWT may be vulnerable, but the one chosen for this lab consists in changing the algorithm type to none. So, we just need to change the algorithm to none, the admin to true, and remove the tail from the JWT.</p><img src=/images/10_week3_hu57a001df98e2d91385b63c1cc54f6617_54179_1200x0_resize_box_3.PNG alt>
+<p>Using that same formula base64(header) + “.” + base64(payload) + “.” + base64(signature), we can create our modified JWT. It’s important to point out that when using a none algorithm, the signature part is erased and the “.” stays. Looks something like this: <strong>“eyJhbGciOiJub25lIn0=.eyJpYXQiOjE2NDc2MTMzODQsImFkbWluIjoidHJ1ZSIsInVzZXIiOiJKZXJyeSJ9.”</strong></p><h3 id=how-to-fix-it-1>
+<strong>How to fix it?</strong>
+<a class=anchor href=#how-to-fix-it-1>#</a>
+</h3><p>This issue happens because there is no verification on the received algorithm. Then, what we need to do is, verify if the algorithm is the same we expect it to be.</p><img src=/images/11_week3_hu82c0ee15b0b96fcdd48d691d73c3b4f5_31973_1200x0_resize_box_3.PNG alt>
+<p>The parse method is the one causing all of this, its purpose should be to parse JWT. The thing is, JWT doesn’t need necessarily to be signed. Seeing that this parse method doesn’t do exactly what we’re looking for, we should use another parser, one that parses signed JWT or what&rsquo;s called JWS.</p><img src=/images/12_week3_hu51df07532279ebb6dbce9a939f65eb76_32414_1200x0_resize_box_3.PNG alt>
+</article><footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+</div><script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+</footer><div class=book-comments>
+</div><label for=menu-control class="hidden book-menu-overlay"></label>
+</div><aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#whats-this><strong>What’s this?</strong></a></li><li><a href=#authentication><strong>Authentication</strong></a>
+<ul>
+<li><a href=#whats-this-1><strong>What’s this?</strong></a></li><li><a href=#how-to-fix-it><strong>How to fix it?</strong></a></li></ul></li><li><a href=#jwt><strong>JWT</strong></a>
+<ul>
+<li><a href=#whats-this-2><strong>What’s this?</strong></a></li><li><a href=#how-to-fix-it-1><strong>How to fix it?</strong></a></li></ul></li></ul></nav></div></aside></main></body></html>

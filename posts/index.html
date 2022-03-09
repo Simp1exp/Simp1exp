@@ -8,13 +8,13 @@
 <meta property="og:description" content>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://simp1exp.github.io/posts/">
-<title>Posts | My New Hugo Site</title><link rel=manifest href=/manifest.json>
+<title>Posts | Simp1exp</title><link rel=manifest href=/manifest.json>
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.ab46de3e725a6415339a37bba23a0067534a37289b063c9f8d011515a63097a8.css integrity="sha256-q0bePnJaZBUzmje7ojoAZ1NKNyibBjyfjQEVFaYwl6g=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.221272223ad17393121c6a52c56611a5a9c1875db09ef7812edfdc9984b59f4d.js integrity="sha256-IhJyIjrRc5MSHGpSxWYRpanBh12wnveBLt/cmYS1n00=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.77b086682a1c0d6e495bb4f203ed23ceeaebe3c56829184f61b6a2d40c6872f9.js integrity="sha256-d7CGaCocDW5JW7TyA+0jzurr48VoKRhPYbai1Axocvk=" crossorigin=anonymous></script>
 <script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script>
-<link rel=alternate type=application/rss+xml href=https://simp1exp.github.io/posts/index.xml title="My New Hugo Site">
+<link rel=alternate type=application/rss+xml href=https://simp1exp.github.io/posts/index.xml title=Simp1exp>
 </head><body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
 <input type=checkbox class="hidden toggle" id=toc-control>
@@ -23,7 +23,7 @@
 <div class=book-menu-content>
 <nav>
 <h2 class=book-brand>
-<a class="flex align-center" href=/><img src=/logo.jpg alt=Logo><span>My New Hugo Site</span>
+<a class="flex align-center" href=/><img src=/logo.jpg alt=Logo><span>Simp1exp</span>
 </a>
 </h2><div class=book-search>
 <input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
@@ -34,6 +34,10 @@
 <a href=/posts/week-1/>Week 1</a>
 </li><li>
 <a href=/posts/week-2/>Week 2</a>
+</li><li>
+<a href=/posts/week-3/>Week 3</a>
+</li><li>
+<a href=/posts/week-4/>Week 4</a>
 </li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 </div></aside><div class=book-page>
 <header class=book-header>
@@ -57,17 +61,30 @@
 </ul></li></ul></nav></aside></header><article class="markdown book-post">
 <h2>
 <a href=/posts/introduction/>Introduction</a>
-</h2><p>How this post is going to work? # The intention of this post is to bring a review of the course “Exploiting and Securing Vulnerabilities in Java Applications” available on Coursera, eventually I also intend to bring some insights and some additional information. The dynamic of the post will be the same as the course, it’ll begin with an explanation about the topic, followed by a practical exercise trying to find the vulnerability, much like a CTF, and finally explain how to fix it.
+</h2><p>How this post is going to work? # This post intends to bring a review of the course “Exploiting and Securing Vulnerabilities in Java Applications” available on Coursera, eventually, I also intend to bring some additional information. The dynamic of the post will be the same as the course, it’ll begin with an explanation about the topic, followed by a practical exercise trying to find the vulnerability, much like a CTF, and finally, explain how to fix it.
 <a href=/posts/introduction/>...</a>
 </p></article><article class="markdown book-post">
 <h2>
 <a href=/posts/week-1/>Week 1</a>
-</h2><p>XSS # What’s this? # Cross Site Scripting or XSS is a type of injection attack. All injection attacks consist in using the input field that the application provides to entry arbitrary data. In XSS case, the arbitrary data is normally written in JavaScript, but may also include HTML, Flash, or any other type of code that the browser may execute. There are three types of XSS: Reflected, Stored and DOM-Based.
+</h2><p>XSS # What’s this? # Cross Site Scripting or XSS is a type of injection attack. All injection attacks consist in using the input field that the application provides to enter arbitrary data. In the XSS case, the arbitrary data is normally written in JavaScript, but may also include HTML, Flash, or any other type of code that the browser may execute. There are three types of XSS: Reflected, Stored, and DOM-Based.
 <a href=/posts/week-1/>...</a>
 </p></article><article class="markdown book-post">
 <h2>
 <a href=/posts/week-2/>Week 2</a>
-</h2><p>Injection Attacks #
+</h2><p>Injection Attacks # What’s this? # Injection attacks are a class of attacks that consists of supplying untrusted input to a program. The objective is to get an exception case that triggers something, from there understand how this input is being sanitized, and then craft a payload. Between the vulnerabilities that fit in this category, SQLi (SQL Injections) and XXE (XML External Entity) are what we’re going to learn in this class SQL Injection # What’s this?
+<a href=/posts/week-2/>...</a>
+</p></article><article class="markdown book-post">
+<h2>
+<a href=/posts/week-3/>Week 3</a>
+</h2><p>Authentication and Authorization # What’s this? # These two are similar in the sense that they guarantee privacy, but they’re also different. Authentication is who you claim to be. Authorization is what you’re allowed to do.
+In this course, authorization is only defined but not explored further to how these policies are ensured. So, some things like the access control model, vertical and horizontal escalation aren’t mentioned. Since my intention isn’t to go out of the scope of this course, I won’t talk about it.
+<a href=/posts/week-3/>...</a>
+</p></article><article class="markdown book-post">
+<h2>
+<a href=/posts/week-4/>Week 4</a>
+</h2><p>Dangers of Vulnerable Components Introduction # This week has much less content in comparison to the others. It focuses more on identifying flaws in your dependencies and updating them.
+One tool used by the instructor is called dependency check by OWASP and it scans your project and returns a report with all the dependencies listed and categorizes one by one, saying if they’re vulnerable, if so, it also gives a link to a known CVE.
+<a href=/posts/week-4/>...</a>
 </p></article><footer class=book-footer>
 <div class="flex flex-wrap justify-between">
 </div><script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>

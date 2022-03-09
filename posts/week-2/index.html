@@ -2,17 +2,17 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Injection Attacks #  ">
+<meta name=description content="Injection Attacks #  What’s this? #   Injection attacks are a class of attacks that consists of supplying untrusted input to a program. The objective is to get an exception case that triggers something, from there understand how this input is being sanitized, and then craft a payload. Between the vulnerabilities that fit in this category, SQLi (SQL Injections) and XXE (XML External Entity) are what we’re going to learn in this class  SQL Injection #  What’s this?">
 <meta name=theme-color content="#FFFFFF">
 <meta name=color-scheme content="light dark"><meta property="og:title" content="Week 2">
-<meta property="og:description" content="Injection Attacks #  ">
+<meta property="og:description" content="Injection Attacks #  What’s this? #   Injection attacks are a class of attacks that consists of supplying untrusted input to a program. The objective is to get an exception case that triggers something, from there understand how this input is being sanitized, and then craft a payload. Between the vulnerabilities that fit in this category, SQLi (SQL Injections) and XXE (XML External Entity) are what we’re going to learn in this class  SQL Injection #  What’s this?">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://simp1exp.github.io/posts/week-2/"><meta property="article:section" content="posts">
-<title>Week 2 | My New Hugo Site</title><link rel=manifest href=/manifest.json>
+<title>Week 2 | Simp1exp</title><link rel=manifest href=/manifest.json>
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.ab46de3e725a6415339a37bba23a0067534a37289b063c9f8d011515a63097a8.css integrity="sha256-q0bePnJaZBUzmje7ojoAZ1NKNyibBjyfjQEVFaYwl6g=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.221272223ad17393121c6a52c56611a5a9c1875db09ef7812edfdc9984b59f4d.js integrity="sha256-IhJyIjrRc5MSHGpSxWYRpanBh12wnveBLt/cmYS1n00=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.77b086682a1c0d6e495bb4f203ed23ceeaebe3c56829184f61b6a2d40c6872f9.js integrity="sha256-d7CGaCocDW5JW7TyA+0jzurr48VoKRhPYbai1Axocvk=" crossorigin=anonymous></script>
 <script defer src=/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js integrity="sha256-b2+Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC+NdcPIvZhzk=" crossorigin=anonymous></script>
 </head><body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -22,7 +22,7 @@
 <div class=book-menu-content>
 <nav>
 <h2 class=book-brand>
-<a class="flex align-center" href=/><img src=/logo.jpg alt=Logo><span>My New Hugo Site</span>
+<a class="flex align-center" href=/><img src=/logo.jpg alt=Logo><span>Simp1exp</span>
 </a>
 </h2><div class=book-search>
 <input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
@@ -33,6 +33,10 @@
 <a href=/posts/week-1/>Week 1</a>
 </li><li>
 <a href=/posts/week-2/ class=active>Week 2</a>
+</li><li>
+<a href=/posts/week-3/>Week 3</a>
+</li><li>
+<a href=/posts/week-4/>Week 4</a>
 </li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 </div></aside><div class=book-page>
 <header class=book-header>
@@ -45,17 +49,69 @@
 <img src=/svg/toc.svg class=book-icon alt="Table of Contents">
 </label>
 </div><aside class="hidden clearfix">
-<nav id=TableOfContents></nav></aside></header><article class=markdown>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#whats-this><strong>What’s this?</strong></a></li><li><a href=#sql-injection><strong>SQL Injection</strong></a>
+<ul>
+<li><a href=#whats-this-1><strong>What’s this?</strong></a></li><li><a href=#how-to-fix-it><strong>How to fix it?</strong></a></li></ul></li><li><a href=#xml-external-entity><strong>XML External Entity</strong></a>
+<ul>
+<li><a href=#whats-this-2><strong>What’s this?</strong></a></li><li><a href=#how-to-fix-it-1><strong>How to fix it?</strong></a></li></ul></li></ul></nav></aside></header><article class=markdown>
 <h1>
 <a href=/posts/week-2/>Week 2</a>
 </h1><h1 id=injection-attacks>
 <strong>Injection Attacks</strong>
 <a class=anchor href=#injection-attacks>#</a>
-</h1></article><footer class=book-footer>
+</h1><h2 id=whats-this>
+<strong>What’s this?</strong>
+<a class=anchor href=#whats-this>#</a>
+</h2><ul>
+<li><strong>Injection attacks</strong> are a class of attacks that consists of supplying untrusted input to a program. The objective is to get an exception case that triggers something, from there understand how this input is being sanitized, and then craft a payload. Between the vulnerabilities that fit in this category, <strong>SQLi</strong> (SQL Injections) and <strong>XXE</strong> (XML External Entity) are what we’re going to learn in this class</li></ul><h2 id=sql-injection>
+<strong>SQL Injection</strong>
+<a class=anchor href=#sql-injection>#</a>
+</h2><h3 id=whats-this-1>
+<strong>What’s this?</strong>
+<a class=anchor href=#whats-this-1>#</a>
+</h3><p>SQL Injection(SQLi) attack is a code injection technique used to attack data-driven applications. This type of application, in general, uses SQL databases to store information making it possible to insert arbitrary SQL statements. Once bypassing these filters it’s possible to modify and read data from the database. To completely understand SQLi I suggest learning the SQL.</p><p>Structured Query Language(SQL) is a language designed for managing data held in a relational database management system. This is what a query looks like:</p><p><code>SELECT population FROM world WHERE name = "France"</code></p><img src=/images/1_week2_hu3f01012ea3f6c3a897b7f0fa2febfc3a_144163_1200x0_resize_box_3.PNG alt>
+<p>This is the basics of SQL, which is like a &ldquo;hello world&rdquo; in other programming languages.</p><p>Ok, back to SQLi, now we’re going to see what a vulnerable application looks like. This is a Challenge from Webgoat:</p><img src=/images/9_week2_hu09f02cc1932b13f4f9640d5af30fb7c0_19833_1200x0_resize_box_3.PNG alt>
+<p>Besides “Register” there is also a tab called “Login”, but it doesn’t matter for now.</p><img src=/images/10_week2_huf55ea074cbedcac235b01f20516ac53b_69118_1200x0_resize_box_3.PNG alt>
+<p>Intercepting the request with “burp” we see a parameter called “username_reg” with the value “teste”</p><img src=/images/11_week2_hua415764d2aedc942cbc61423bf8c8583_123702_1200x0_resize_box_3.PNG alt>
+<p>This first piece of code in the “registerNewUser” method is using the username to check if this user is already registered.
+The parameter in the PUT request is passed to a variable, also called “username_reg”, after that, in red, this variable is concatenated to another string to form a query and this query is placed in another variable called “checkUserQuery”. I logged the value of this string to show what the value of this string is. Remember, this string is going to be executed in the database.</p><p>Ok, but is this vulnerable? Because the string is being concatenated, we can modify the structure of this query.</p><img src=/images/12_week2_huf702e627d87ba068ecd2b682b3c82f42_20893_1200x0_resize_box_3.PNG alt>
+<p>See? This is saying the user “teste’or’1’=’1’—” already exists. This user wasn’t created, so how we’re having this output?</p><p>
+<img src=/images/13_week2_hu5398512a1e20262fc16b53e9fdbc9808_137204_1200x0_resize_box_3.PNG alt>
+That input we placed in the form formed this query. With a basic understanding of SQL, you can understand that this is always true. Regardless of the userid, we won’t be able to register a new account. Ok, but how can we exploit this SQLi vulnerability to dump the database, discover user passwords, and so on? Well, this is up to your imagination and understanding of SQL. My goal here is to teach about SQL and how to fix it. Not how to exploit it.</p><h3 id=how-to-fix-it>
+<strong>How to fix it?</strong>
+<a class=anchor href=#how-to-fix-it>#</a>
+</h3><p>In the course is said about something called parameterized strings or a prepared statement. What you need to know is that this thing ensures the crafted data we send won’t interfere with the structure of the query. Because the query structure has already been defined, the relevant API handles any type of placeholder data safely, so it is always interpreted as data rather than part of the statement’s structure.</p><img src=/images/15_week2_hud5bd374c81b6448366ee60eb9fd7f78e_276666_1200x0_resize_box_3.PNG alt>
+<p>Remember I said the login form didn’t matter for us back then? This is why. Since this code is secure, it couldn’t be used as an example.</p><h2 id=xml-external-entity>
+<strong>XML External Entity</strong>
+<a class=anchor href=#xml-external-entity>#</a>
+</h2><h3 id=whats-this-2>
+<strong>What’s this?</strong>
+<a class=anchor href=#whats-this-2>#</a>
+</h3><p>XXE is also a code injection technique, but different from SQLi, your target is applications that parse XML input. OK, but what is XML? XML is a markup language similar to HTML, it’s generally used to handle data in a standard structure. This language is used in a ton of places such as APIs, UI layouts & styles in android applications, and config files of various frameworks. It looks something like this:</p><img src=/images/2_week2_hu5fb34e7bf6bccd1ac1005b898b177c32_64312_1200x0_resize_box_3.PNG alt>
+<p>It’s important to mention that XML has something called entities that are like variables and these variables are defined in a separate part of the document, called Document type definition (DTD).</p><img src=/images/3_week2_hu6366fffc196380ee7c6554768e97b873_31766_1200x0_resize_box_3.PNG alt>
+<p>This “ENTITY” in the DTD has a property called “SYSTEM" that allows assigning external content to a variable. That is where the name XML external entity comes from.</p><img src=/images/4_week2_huc05f5ff7b94a58e93c010cd7f77d46fa_61389_1200x0_resize_box_3.PNG alt>
+<p>Knowing only this is enough to perform an XXE, more precisely, an in-band one. So, what’s an in-band XXE? It’s when the XML is parsed and the output is shown on the screen.</p><p>Example:
+<img src=/images/5_week2_hu2234cc73fa818795e51fcc7ed9eaf296_353849_1200x0_resize_box_3.PNG alt>
+<img src=/images/6_week2_hue1abf0ca1f30351a7db8385de6e996cd_180833_1200x0_resize_box_3.PNG alt>
+</p><p>Here is what the actual communication looks like. It’s important to notice the Content-Type as well, depending on how the application is implemented, the header might tell the framework how to parse this body.</p><img src=/images/7_week2_hu3321ded239e97fea79d93a9c6c72d78c_100492_1200x0_resize_box_3.PNG alt>
+<p>What is happening here is that we’re creating an external entity called “test” that refers to a “.”, this dot represents the current directory. After creating this entity, we call it in the <code>&lt;text></code> tag. This tag carries what’s shown in the comment section.</p><img src=/images/8_week2_hu1fb747f869d7596c0316d581c8d831d3_257116_1200x0_resize_box_3.PNG alt>
+<h3 id=how-to-fix-it-1>
+<strong>How to fix it?</strong>
+<a class=anchor href=#how-to-fix-it-1>#</a>
+</h3><p>The way the instructor solved this lab was by configuring the framework to ignore DTD since the application doesn’t use this XML feature, although sometimes you need internal entities, but not external ones. When this happens, it might be possible to configure the framework you’re using to disable it.</p><img src=/images/14_week2_hu3439b300d94f9240fc79aba0712d6c9c_21228_1200x0_resize_box_3.PNG alt>
+</article><footer class=book-footer>
 <div class="flex flex-wrap justify-between">
 </div><script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
 </footer><div class=book-comments>
 </div><label for=menu-control class="hidden book-menu-overlay"></label>
 </div><aside class=book-toc>
 <div class=book-toc-content>
-<nav id=TableOfContents></nav></div></aside></main></body></html>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#whats-this><strong>What’s this?</strong></a></li><li><a href=#sql-injection><strong>SQL Injection</strong></a>
+<ul>
+<li><a href=#whats-this-1><strong>What’s this?</strong></a></li><li><a href=#how-to-fix-it><strong>How to fix it?</strong></a></li></ul></li><li><a href=#xml-external-entity><strong>XML External Entity</strong></a>
+<ul>
+<li><a href=#whats-this-2><strong>What’s this?</strong></a></li><li><a href=#how-to-fix-it-1><strong>How to fix it?</strong></a></li></ul></li></ul></nav></div></aside></main></body></html>
